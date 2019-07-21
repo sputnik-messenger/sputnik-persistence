@@ -83,6 +83,8 @@ class RoomSummaryBatchWriter extends BaseBatchWriter {
           COLUMN_m_room_encryption_ts: roomSummary.roomStateValues.encryption?.roomEvent?.origin_server_ts ?? 0,
           COLUMN_m_room_power_levels: encode(roomSummary.roomStateValues.powerLevels?.roomEvent),
           COLUMN_m_room_power_levels_ts: roomSummary.roomStateValues.powerLevels?.roomEvent?.origin_server_ts ?? 0,
+          COLUMN_m_room_tombstone: encode(roomSummary.roomStateValues.tombstone?.roomEvent),
+          COLUMN_m_room_tombstone_ts: roomSummary.roomStateValues.tombstone?.roomEvent?.origin_server_ts ?? 0,
           COLUMN_LAST_RELEVANT_ROOM_EVENT: encode(roomSummary.lastRelevantRoomEvent),
           COLUMN_LAST_RELEVANT_ROOM_EVENT_ts: roomSummary.lastRelevantRoomEvent?.origin_server_ts ?? 0,
         },
