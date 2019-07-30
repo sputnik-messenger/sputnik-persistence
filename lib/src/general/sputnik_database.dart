@@ -31,9 +31,10 @@ class SputnikDatabase {
       onCreate: (db, version) async {
         await AccountSummaryProvider.createTables(db, version);
       },
-      onUpgrade: (db, oldVersion, newVersion) {
-        AccountSummaryProvider.resetNextBatchSyncTokens(db);
-      }
+      onUpgrade: (db, oldVersion, newVersion) async {
+        await AccountSummaryProvider.dropTables(db);
+        await AccountSummaryProvider.createTables(db, newVersion);
+      },
     );
     accountSummaryProvider = AccountSummaryProvider(_db);
 
